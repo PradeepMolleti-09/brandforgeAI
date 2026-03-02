@@ -31,7 +31,7 @@ export default function Sidebar() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 blur-[120px] rounded-full -mr-32 -mt-32 transition-colors group-hover:bg-indigo-500/15" />
 
             <div className="flex items-center gap-3 mb-10 px-2 relative">
-                <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center p-2 shadow-2xl ring-1 ring-white/10 group-hover:ring-indigo-500/50 transition-all duration-500 overflow-hidden">
+                <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center p-1 overflow-hidden">
                     <img src="/logo-b.png" alt="BrandForge Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
