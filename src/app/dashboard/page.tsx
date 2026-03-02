@@ -75,7 +75,7 @@ export default function Dashboard() {
     return (
         <div className="flex h-screen bg-[#fcfdfe]">
             <Sidebar />
-            <main className="flex-1 overflow-auto custom-scrollbar">
+            <main className="flex-1 overflow-y-auto overflow-x-hidden custom-scrollbar">
                 <div className="max-w-7xl mx-auto px-10 py-12">
                     {/* Header */}
                     <header className="flex justify-between items-center mb-12">

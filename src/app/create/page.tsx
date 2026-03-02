@@ -63,7 +63,7 @@ export default function CreatePost() {
     return (
         <div className="flex h-screen bg-[#f8fafc]">
             <Sidebar />
-            <main className="flex-1 overflow-auto custom-scrollbar relative">
+            <main className="flex-1 min-h-screen overflow-y-auto overflow-x-hidden custom-scrollbar relative">
                 {/* Background Decor */}
                 <div className="absolute top-0 right-0 w-[50vw] h-[50vh] bg-indigo-500/5 blur-[120px] rounded-full -mr-[10vw] -mt-[10vh] pointer-events-none" />
                 <div className="absolute bottom-0 left-0 w-[30vw] h-[30vh] bg-blue-500/5 blur-[100px] rounded-full -ml-[5vw] -mb-[5vh] pointer-events-none" />
