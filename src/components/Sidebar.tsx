@@ -36,7 +36,7 @@ export default function Sidebar() {
                 </div>
                 <div>
                     <h1 className="text-lg font-black tracking-tighter uppercase leading-none">
-                        BrandPost <span className="text-indigo-500 italic block text-[10px] tracking-widest mt-0.5">Engine v2.0</span>
+                        BrandForge <span className="text-indigo-500 italic block text-[10px] tracking-widest mt-0.5">Engine v2.0</span>
                     </h1>
                 </div>
             </div>

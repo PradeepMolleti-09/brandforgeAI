@@ -16,7 +16,7 @@ export default async function Home() {
             <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
           <div>
-            <span className="text-xl font-black tracking-tighter text-slate-950 uppercase italic">BrandPost <span className="text-indigo-600 not-italic">AI</span></span>
+            <span className="text-xl font-black tracking-tighter text-slate-950 uppercase italic">BrandForge <span className="text-indigo-600 not-italic">AI</span></span>
             <div className="h-0.5 bg-indigo-600 w-0 group-hover:w-full transition-all duration-500 rounded-full" />
           </div>
         </div>
@@ -187,7 +187,7 @@ export default async function Home() {
           <div className="space-y-6 max-w-sm">
             <div className="flex items-center gap-3 justify-center md:justify-start grayscale opacity-60">
               <div className="w-10 h-10 bg-slate-950 rounded-xl" />
-              <span className="font-black text-slate-950 uppercase italic tracking-tighter">BrandPost AI</span>
+              <span className="font-black text-slate-950 uppercase italic tracking-tighter">BrandForge AI</span>
             </div>
             <p className="text-slate-400 font-bold text-sm leading-relaxed">The professional standard for neural design generation. Built for brands that demand consistency.</p>
           </div>
