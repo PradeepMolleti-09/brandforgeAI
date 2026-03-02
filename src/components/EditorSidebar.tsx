@@ -42,7 +42,8 @@ import {
     Cloud,
     Camera,
     Bell,
-    Award
+    Award,
+    Loader2
 } from "lucide-react";
 import { useState, useRef } from "react";
 import { generateTemplate, TemplateType } from "@/lib/TemplateGenerator";
@@ -410,15 +411,71 @@ export default function EditorSidebar() {
                         )}
 
                         {activeTab === 'magic' && (
-                            <div className="flex flex-col items-center justify-center h-[400px] text-center p-4">
-                                <div className="w-24 h-24 bg-indigo-50 text-indigo-600 rounded-[2.5rem] flex items-center justify-center mb-8 relative">
-                                    <Sparkles size={42} />
-                                    <div className="absolute inset-0 bg-indigo-500/10 rounded-full animate-ping" />
+                            <div className="flex flex-col items-center justify-center min-h-[400px] text-center p-4 space-y-8 animate-in zoom-in-95 duration-500">
+                                <div className="relative">
+                                    <div className="w-24 h-24 bg-indigo-50 text-indigo-600 rounded-[2.5rem] flex items-center justify-center relative z-10 shadow-inner shadow-indigo-100">
+                                        {isUploading ? <Loader2 className="animate-spin" size={42} /> : <Sparkles size={42} />}
+                                    </div>
+                                    <div className="absolute inset-0 bg-indigo-500/10 rounded-full animate-ping -z-0" />
+                                    <div className="absolute -top-2 -right-2 w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white border-4 border-white">
+                                        <Zap size={14} fill="currentColor" />
+                                    </div>
                                 </div>
-                                <h3 className="text-lg font-black text-slate-900 uppercase tracking-tight">Neural Design Core</h3>
-                                <button className="mt-8 bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-indigo-700 shadow-xl shadow-indigo-200 active:scale-95 transition-all">
-                                    Generate Variations
-                                </button>
+
+                                <div className="space-y-2">
+                                    <h3 className="text-lg font-black text-slate-900 uppercase tracking-tight">Neural Refinement</h3>
+                                    <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest max-w-[200px] mx-auto leading-relaxed">
+                                        Let BrandForge AI optimize your layout, color harmony, and composition.
+                                    </p>
+                                </div>
+
+                                <div className="w-full space-y-3">
+                                    <button
+                                        onClick={() => {
+                                            const templates: TemplateType[] = ['movie', 'vogue', 'minimal', 'neon', 'brutalist', 'cyberpunk'];
+                                            const randomTpl = templates[Math.floor(Math.random() * templates.length)];
+                                            handleApplyTemplate(randomTpl);
+                                        }}
+                                        className="w-full bg-slate-900 text-white px-8 py-5 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-indigo-600 shadow-xl shadow-slate-200 active:scale-95 transition-all flex items-center justify-center gap-3 group"
+                                    >
+                                        <Sparkles size={16} className="text-indigo-400 group-hover:rotate-12 transition-transform" />
+                                        Auto-Refine Layout
+                                    </button>
+
+                                    <button
+                                        onClick={() => {
+                                            const colors = ['#dc2626', '#10b981', '#4f46e5', '#f59e0b', '#7c3aed', '#000000'];
+                                            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                                            // Directly update primary color in store and re-apply template
+                                            useEditorStore.setState({ primaryColor: randomColor });
+                                            // We need to re-apply the current style or just notify. 
+                                            // For now, let's just use the shuffle logic.
+                                            const currentElements = useEditorStore.getState().elements;
+                                            const newElements = currentElements.map(el =>
+                                                (el.type === 'rect' || el.type === 'circle') ? { ...el, fill: randomColor } : el
+                                            );
+                                            setElements(newElements);
+                                        }}
+                                        className="w-full bg-white border-2 border-slate-100 text-slate-900 px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:border-indigo-200 hover:text-indigo-600 active:scale-95 transition-all flex items-center justify-center gap-3"
+                                    >
+                                        <Palette size={16} />
+                                        Shuffle Palette
+                                    </button>
+                                </div>
+
+                                <div className="pt-4 border-t border-slate-50 w-full">
+                                    <div className="flex items-center justify-between text-[10px] font-black uppercase text-slate-300 tracking-widest mb-4">
+                                        <span>AI Processing Nodes</span>
+                                        <span className="text-emerald-500">Active</span>
+                                    </div>
+                                    <div className="flex gap-1.5 justify-center">
+                                        {[1, 2, 3, 4, 5].map(i => (
+                                            <div key={i} className="h-1 w-8 bg-slate-100 rounded-full overflow-hidden">
+                                                <div className="h-full bg-indigo-500 rounded-full animate-pulse" style={{ animationDelay: `${i * 0.2}s`, width: `${Math.random() * 100}%` }} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                         )}
                     </div>

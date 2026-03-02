@@ -208,6 +208,41 @@ export default function CanvasEditor() {
         if (type === 'fit') setZoom(1);
     }
 
+    // --- EXPORT LOGIC ---
+    useEffect(() => {
+        if (isExporting && stageRef.current) {
+            const handleExport = async () => {
+                // 1. Deselect and hide UI highlights
+                setSelectedId(null);
+
+                // 2. Wait for UI to update (Transformer removal)
+                await new Promise(resolve => setTimeout(resolve, 100));
+
+                try {
+                    // 3. Generate high-quality image
+                    const uri = stageRef.current.toDataURL({
+                        pixelRatio: 3, // 3x for high resolution
+                        mimeType: 'image/png',
+                        quality: 1
+                    });
+
+                    // 4. Trigger Download
+                    const link = document.createElement('a');
+                    link.download = `brandforge-${aspectRatio}-${Date.now()}.png`;
+                    link.href = uri;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } catch (err) {
+                    console.error("Export failed:", err);
+                } finally {
+                    setIsExporting(false);
+                }
+            };
+            handleExport();
+        }
+    }, [isExporting, aspectRatio, setIsExporting, setSelectedId]);
+
     return (
         <div className={cn("flex-1 flex flex-col overflow-hidden relative transition-colors duration-500", previewMode ? "bg-slate-950" : "bg-[#f0f2f5]")}>
             {/* Context Tooltips / Floating Nav */}

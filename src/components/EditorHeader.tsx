@@ -108,12 +108,6 @@ export default function EditorHeader({ design }: EditorHeaderProps) {
                         )}
                     </button>
                 </div>
-
-                <div className="w-px h-8 bg-slate-100 mx-2" />
-
-                <button className="w-10 h-10 bg-slate-100 rounded-full border-2 border-white shadow-sm hover:ring-2 hover:ring-indigo-500 transition-all overflow-hidden flex items-center justify-center p-0.5">
-                    <img src="https://ui-avatars.com/api/?name=User&background=6366f1&color=fff" className="w-full h-full rounded-full" />
-                </button>
             </div>
         </header>
     );
