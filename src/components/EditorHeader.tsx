@@ -30,7 +30,7 @@ export default function EditorHeader({ design }: EditorHeaderProps) {
                     className="w-12 h-12 bg-white/50 border border-slate-200 rounded-2xl flex items-center justify-center p-2 text-slate-400 hover:text-indigo-600 hover:border-indigo-200 hover:bg-white hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 group relative overflow-hidden"
                 >
                     <div className="absolute inset-0 bg-indigo-50/50 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
-                    <img src="/logo-icon.png" alt="BrandForge Logo" className="w-full h-full object-contain relative z-10 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all" />
+                    <img src="/logo-b.png" alt="BrandForge Logo" className="w-full h-full object-contain relative z-10 opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all" />
                 </Link>
 
                 <div className="flex flex-col">

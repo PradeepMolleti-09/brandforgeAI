@@ -11,30 +11,37 @@ export default async function Home() {
       {/* Navigation */}
       <nav className="h-24 bg-white/80 backdrop-blur-xl border-b border-slate-100 px-10 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-3 group cursor-pointer">
-          <div className="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center p-2.5 shadow-2xl shadow-indigo-900/5 group-hover:bg-white transition-all group-hover:scale-105 duration-500 ring-1 ring-slate-200 group-hover:ring-indigo-500/20">
-            <img src="/logo-icon.png" alt="BrandForge Logo" className="w-full h-full object-contain" />
+          <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center p-2 shadow-2xl shadow-indigo-900/10 group-hover:bg-white transition-all group-hover:scale-110 duration-500 ring-1 ring-slate-200 group-hover:ring-indigo-500/30 overflow-hidden relative">
+            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <img src="/logo-b.png" alt="BrandForge Logo" className="w-full h-full object-contain relative z-10" />
           </div>
-          <div>
-            <span className="text-xl font-black tracking-tighter text-slate-1000 uppercase italic">BrandForge <span className="text-indigo-600 not-italic">AI</span></span>
-            <div className="h-0.5 bg-indigo-600 w-0 group-hover:w-full transition-all duration-500 rounded-full" />
+          <div className="flex flex-col">
+            <span className="text-xl font-black tracking-tighter text-slate-950 uppercase italic leading-none">BrandForge <span className="text-indigo-600 not-italic">AI</span></span>
+            <span className="text-[8px] font-black text-slate-400 uppercase tracking-[0.3em] mt-0.5 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-1 group-hover:translate-y-0 text-center">Neural Slate</span>
           </div>
         </div>
 
         <div className="flex items-center gap-10">
           <div className="hidden lg:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-            <a href="#features" className="hover:text-indigo-600 transition-colors">Platform</a>
-            <a href="#solutions" className="hover:text-indigo-600 transition-colors">Solutions</a>
-            <a href="#pricing" className="hover:text-indigo-600 transition-colors">Pricing</a>
+            {['Platform', 'Solutions', 'Pricing'].map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-indigo-600 transition-all relative group/link">
+                {item}
+                <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 group-hover/link:w-full transition-all duration-300 rounded-full" />
+              </a>
+            ))}
           </div>
           {session ? (
-            <Link href="/dashboard" className="bg-slate-950 text-white px-8 py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-xl shadow-indigo-900/10 hover:scale-[1.05] active:scale-95">
-              Console Suite <ArrowRight size={14} className="inline ml-2" />
+            <Link href="/dashboard" className="bg-slate-950 text-white px-8 py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-xl shadow-indigo-900/10 hover:scale-[1.05] active:scale-95 flex items-center gap-2 group">
+              Console Suite
+              <div className="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                <ArrowRight size={10} />
+              </div>
             </Link>
           ) : (
             <div className="flex items-center gap-4">
               <Link href="/dashboard" className="text-slate-400 font-black text-[10px] uppercase tracking-widest hover:text-indigo-600 transition-colors px-4">Login</Link>
               <Link href="/dashboard" className="bg-slate-950 text-white px-8 py-4 rounded-2xl font-black text-[11px] uppercase tracking-widest hover:bg-indigo-600 transition-all shadow-2xl shadow-indigo-900/20 hover:scale-[1.05] active:scale-95">
-                Get Started
+                Join Network
               </Link>
             </div>
           )}
@@ -42,35 +49,44 @@ export default async function Home() {
       </nav>
 
       <main className="relative">
-        {/* Background Decorations */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-600/5 blur-[120px] rounded-full -mr-96 -mt-96 animate-pulse duration-[10000ms]" />
-        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-purple-600/5 blur-[120px] rounded-full -ml-96 -translate-y-1/2" />
+        {/* Background Animated Decorations */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-600/5 blur-[120px] rounded-full -mr-96 -mt-96 animate-blob" />
+        <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-purple-600/5 blur-[120px] rounded-full -ml-96 -translate-y-1/2 animate-blob [animation-delay:4s]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-600/5 blur-[100px] rounded-full animate-blob [animation-delay:8s]" />
 
         {/* Hero Section */}
         <section className="pt-32 pb-48 px-10 relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-            <div className="inline-flex items-center gap-3 bg-indigo-50 border border-indigo-100 text-indigo-700 px-6 py-2.5 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-12 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <Sparkles size={14} className="animate-pulse" /> Generative Neural Branding Suite v2.0
+            <div className="inline-flex items-center gap-3 bg-white border border-slate-100 text-slate-800 px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] mb-12 shadow-2xl shadow-indigo-900/5 animate-in fade-in slide-in-from-bottom-4 duration-1000 group cursor-pointer hover:border-indigo-200 transition-all">
+              <div className="w-2 h-2 bg-indigo-600 rounded-full animate-pulse" />
+              <span className="opacity-60 group-hover:opacity-100 transition-opacity">Generative Neural Branding Suite v2.0</span>
             </div>
 
-            <h1 className="text-7xl lg:text-[10rem] font-black text-slate-950 leading-[0.8] tracking-tighter mb-12 uppercase italic relative animate-in fade-in slide-in-from-bottom-8 duration-1000">
-              Post <br />
-              <span className="text-indigo-600 not-italic relative">
-                Intelligence.
-                <div className="absolute -bottom-4 left-0 right-0 h-4 bg-indigo-100/50 -rotate-1 rounded-full -z-10" />
-              </span>
+            <h1 className="text-7xl lg:text-[10rem] font-black text-slate-950 leading-[0.8] tracking-tighter mb-12 uppercase italic relative group">
+              <div className="animate-in fade-in slide-in-from-bottom-8 duration-1000 [animation-delay:200ms]">Create</div>
+              <div className="text-indigo-600 not-italic relative animate-in fade-in slide-in-from-bottom-12 duration-1000 [animation-delay:400ms]">
+                Momentum.
+                <div className="absolute -bottom-4 left-0 right-0 h-4 bg-indigo-100/50 -rotate-1 rounded-full -z-10 group-hover:rotate-0 transition-transform duration-700" />
+              </div>
             </h1>
 
-            <p className="text-xl lg:text-3xl text-slate-400 font-bold max-w-2xl mb-16 leading-tight tracking-tight animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200 uppercase">
-              Stop manually designing. Our neural canvas generates high-fidelity social assets from just a topic.
+            <p className="text-xl lg:text-2xl text-slate-400 font-bold max-w-2xl mb-16 leading-tight tracking-tight animate-in fade-in slide-in-from-bottom-16 duration-1000 [animation-delay:600ms] uppercase">
+              The professional protocol for high-fidelity social assets. Built on neural logic, tailored to your DNA.
             </p>
 
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-300">
-              <Link href="/dashboard" className="bg-indigo-600 text-white px-12 py-7 rounded-[2rem] font-black text-sm uppercase tracking-[0.2em] hover:bg-indigo-700 transition-all shadow-[0_20px_60px_-15px_rgba(79,70,229,0.4)] hover:scale-[1.05] active:scale-95">
-                {session ? "Launch Dashboard" : "Start Generating Now"}
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 animate-in fade-in slide-in-from-bottom-20 duration-1000 [animation-delay:800ms]">
+              <Link href="/dashboard" className="relative group overflow-hidden bg-indigo-600 text-white px-12 py-7 rounded-[2rem] font-black text-sm uppercase tracking-[0.2em] transition-all shadow-[0_20px_60px_-15px_rgba(79,70,229,0.4)] hover:scale-[1.05] active:scale-95">
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 translate-x-[-200%] group-hover:translate-x-[200%] transition-transform duration-1000 ease-in-out" />
+                <span className="relative z-10">{session ? "Open Console" : "Begin Generation"}</span>
               </Link>
-              <div className="text-[10px] font-black text-slate-300 uppercase tracking-widest max-w-[140px] text-left leading-tight">
-                Fully editable canvas. <br /> AI elements. High Res.
+              <div className="flex flex-col text-left">
+                <div className="flex gap-1 mb-2">
+                  {[1, 2, 3, 4, 5].map(i => <div key={i} className="w-1 h-4 bg-indigo-600/20 rounded-full animate-pulse" style={{ animationDelay: `${i * 200}ms` }} />)}
+                </div>
+                <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">
+                  Neural Engine <br />
+                  <span className="text-indigo-600">Active Status.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -185,8 +201,8 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
           <div className="space-y-6 max-w-sm">
             <div className="flex items-center gap-3 justify-center md:justify-start grayscale opacity-60 hover:grayscale-0 transition-all duration-500">
-              <div className="w-10 h-10 bg-slate-100 rounded-xl p-1.5 ring-1 ring-slate-200">
-                <img src="/logo-icon.png" alt="BrandForge Logo" className="w-full h-full object-contain" />
+              <div className="w-10 h-10 bg-slate-100 rounded-xl p-2 ring-1 ring-slate-200">
+                <img src="/logo-b.png" alt="BrandForge Logo" className="w-full h-full object-contain" />
               </div>
               <span className="font-black text-slate-950 uppercase italic tracking-tighter">BrandForge AI</span>
             </div>

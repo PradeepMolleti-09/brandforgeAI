@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "BrandForge AI | Professional Social Media Posts in Seconds",
   description: "Create brand-consistent social media posts using AI. Tailored to your brand colors, tone, and industry.",
   icons: {
-    icon: "/logo-icon.png",
+    icon: "/logo-b.png",
   },
 };
 

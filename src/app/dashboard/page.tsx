@@ -56,8 +56,8 @@ export default function Dashboard() {
                 <div className="bg-white p-12 rounded-[3.5rem] shadow-2xl shadow-indigo-900/10 border border-slate-100 max-w-md w-full text-center relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full -mr-32 -mt-32 group-hover:bg-indigo-500/10 transition-colors" />
 
-                    <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center mx-auto mb-10 relative ring-1 ring-slate-100 shadow-2xl shadow-indigo-900/10 group-hover:scale-105 transition-transform duration-500 p-5">
-                        <img src="/logo-icon.png" alt="BrandForge Logo" className="w-full h-full object-contain" />
+                    <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center mx-auto mb-10 relative ring-1 ring-slate-100 shadow-2xl shadow-indigo-900/10 group-hover:scale-105 transition-transform duration-500 p-4 overflow-hidden">
+                        <img src="/logo-b.png" alt="BrandForge Logo" className="w-full h-full object-contain" />
                     </div>
 
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full mb-6">
