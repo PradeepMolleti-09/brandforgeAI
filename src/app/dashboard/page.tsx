@@ -53,12 +53,21 @@ export default function Dashboard() {
     if (status === "unauthenticated") {
         return (
             <div className="flex h-screen items-center justify-center bg-slate-50 p-6">
-                <div className="bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-slate-200 border border-slate-100 max-w-md w-full text-center relative overflow-hidden group">
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 blur-[80px] rounded-full -mr-16 -mt-16 group-hover:bg-indigo-500/10 transition-colors" />
-                    <div className="w-20 h-20 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-8 relative ring-8 ring-indigo-50/50">
-                        <Lock size={40} />
+                <div className="bg-white p-12 rounded-[3.5rem] shadow-2xl shadow-indigo-900/10 border border-slate-100 max-w-md w-full text-center relative overflow-hidden group">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/5 blur-[100px] rounded-full -mr-32 -mt-32 group-hover:bg-indigo-500/10 transition-colors" />
+
+                    <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center mx-auto mb-10 relative ring-1 ring-slate-100 shadow-2xl shadow-indigo-900/10 group-hover:scale-105 transition-transform duration-500 p-5">
+                        <img src="/logo-icon.png" alt="BrandForge Logo" className="w-full h-full object-contain" />
                     </div>
-                    <h2 className="text-3xl font-black text-slate-900 mb-3 tracking-tight">Access Pro Suite</h2>
+
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full mb-6">
+                        <Lock size={12} className="text-indigo-600" />
+                        <span className="text-[10px] font-black text-indigo-600 uppercase tracking-widest">Secure Console Suite</span>
+                    </div>
+
+                    <h2 className="text-4xl font-black text-slate-900 mb-4 tracking-tight uppercase italic leading-none">
+                        Access <span className="text-indigo-600">Neural Hub.</span>
+                    </h2>
                     <p className="text-slate-500 mb-10 font-medium leading-relaxed">Sign in to sync your brand assets and unlock professional post generation.</p>
                     <button
                         onClick={() => signIn("google", { callbackUrl: "/dashboard" })}

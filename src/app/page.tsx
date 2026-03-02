@@ -11,12 +11,11 @@ export default async function Home() {
       {/* Navigation */}
       <nav className="h-24 bg-white/80 backdrop-blur-xl border-b border-slate-100 px-10 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-3 group cursor-pointer">
-          <div className="w-12 h-12 bg-slate-900 rounded-2xl flex items-center justify-center text-white font-black text-2xl shadow-2xl shadow-indigo-900/40 group-hover:bg-indigo-600 transition-all group-hover:scale-105 duration-500">
-            B
-            <div className="absolute inset-0 bg-white/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
+          <div className="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center p-2.5 shadow-2xl shadow-indigo-900/5 group-hover:bg-white transition-all group-hover:scale-105 duration-500 ring-1 ring-slate-200 group-hover:ring-indigo-500/20">
+            <img src="/logo-icon.png" alt="BrandForge Logo" className="w-full h-full object-contain" />
           </div>
           <div>
-            <span className="text-xl font-black tracking-tighter text-slate-950 uppercase italic">BrandForge <span className="text-indigo-600 not-italic">AI</span></span>
+            <span className="text-xl font-black tracking-tighter text-slate-1000 uppercase italic">BrandForge <span className="text-indigo-600 not-italic">AI</span></span>
             <div className="h-0.5 bg-indigo-600 w-0 group-hover:w-full transition-all duration-500 rounded-full" />
           </div>
         </div>
@@ -185,8 +184,10 @@ export default async function Home() {
       <footer className="py-32 px-10 border-t border-slate-100 bg-white">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
           <div className="space-y-6 max-w-sm">
-            <div className="flex items-center gap-3 justify-center md:justify-start grayscale opacity-60">
-              <div className="w-10 h-10 bg-slate-950 rounded-xl" />
+            <div className="flex items-center gap-3 justify-center md:justify-start grayscale opacity-60 hover:grayscale-0 transition-all duration-500">
+              <div className="w-10 h-10 bg-slate-100 rounded-xl p-1.5 ring-1 ring-slate-200">
+                <img src="/logo-icon.png" alt="BrandForge Logo" className="w-full h-full object-contain" />
+              </div>
               <span className="font-black text-slate-950 uppercase italic tracking-tighter">BrandForge AI</span>
             </div>
             <p className="text-slate-400 font-bold text-sm leading-relaxed">The professional standard for neural design generation. Built for brands that demand consistency.</p>
