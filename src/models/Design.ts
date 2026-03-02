@@ -4,8 +4,8 @@ const DesignSchema = new Schema({
     userId: { type: Schema.Types.ObjectId, ref: 'User', required: true },
     topic: { type: String, required: true },
     description: { type: String },
-    platform: { type: String, enum: ['Instagram', 'LinkedIn', 'Poster'], required: true },
-    aspectRatio: { type: String, enum: ['1:1', '4:5', '16:9'], default: '1:1' },
+    platform: { type: String, enum: ['Instagram', 'LinkedIn', 'Poster', 'Facebook', 'Twitter'], required: true },
+    aspectRatio: { type: String, enum: ['1:1', '4:5', '16:9', '9:16', '2:3'], default: '1:1' },
     templateType: { type: String },
     elementsJson: { type: Array, default: [] }, // Stores array of CanvasElement objects
     layoutJson: { type: Schema.Types.Mixed },     // General metadata (bg color etc)
@@ -22,6 +22,7 @@ const DesignSchema = new Schema({
         captions: [String],
         ctas: [String],
         imageUrls: [String],
+        templateSuggestion: String,
     },
     finalImageUrl: { type: String },
     createdAt: { type: Date, default: Date.now },

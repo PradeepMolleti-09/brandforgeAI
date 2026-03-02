@@ -67,8 +67,14 @@ export async function POST(req: NextRequest) {
         return NextResponse.json(design);
     } catch (error: any) {
         console.error("GENERATE SERVICE ERROR:", error);
+
+        // Detailed error for debugging
+        const errorMessage = error.response?.data?.error || error.message || "Internal Server Error";
+        const statusCode = error.response?.status || 500;
+
         return NextResponse.json({
-            error: error.message || "Internal Server Error",
-        }, { status: 500 });
+            error: errorMessage,
+            details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+        }, { status: statusCode });
     }
 }

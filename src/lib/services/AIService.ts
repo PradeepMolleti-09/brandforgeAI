@@ -32,14 +32,35 @@ export class AIService {
             Strictly return ONLY JSON.
         `;
 
-        const completion = await openai.chat.completions.create({
-            model: "openai/gpt-4o",
-            messages: [{ role: "user", content: prompt }],
-            response_format: { type: "json_object" },
-            max_tokens: 1000,
-        });
+        try {
+            const apiKey = process.env.OPENAI_API_KEY || "";
+            const isOpenRouter = apiKey.startsWith("sk-or") || apiKey.includes("openrouter");
+            const modelName = isOpenRouter ? "openai/gpt-4o" : "gpt-4o";
 
-        return JSON.parse(completion.choices[0].message.content || "{}");
+            const completion = await openai.chat.completions.create({
+                model: modelName,
+                messages: [{ role: "user", content: prompt }],
+                response_format: { type: "json_object" },
+                max_tokens: 1000,
+            });
+
+            const content = completion.choices[0]?.message?.content || "{}";
+
+            // Extract JSON if it's wrapped in markdown code blocks
+            const jsonMatch = content.match(/\{[\s\S]*\}/);
+            const cleanContent = jsonMatch ? jsonMatch[0] : content;
+
+            return JSON.parse(cleanContent);
+        } catch (error) {
+            console.error("AIService.generateMarketingText failed:", error);
+            // Return safe fallback values to prevent 500
+            return {
+                headlines: [`${params.topic} - Quality First`, "Discover Our Latest", "Check this out!"],
+                captions: [params.description, "Transforming your brand experience.", "Join us today!"],
+                ctas: ["Learn More", "Get Started"],
+                templateSuggestion: "product"
+            };
+        }
     }
 
     /**
@@ -51,10 +72,14 @@ export class AIService {
         brand: any;
     }) {
         try {
+            const apiKey = process.env.OPENAI_API_KEY || "";
+            const isOpenRouter = apiKey.startsWith("sk-or") || apiKey.includes("openrouter");
+            const imageModel = isOpenRouter ? "openai/dall-e-3" : "dall-e-3";
+
             const prompt = `A professional, high-end background for ${params.platform} about ${params.topic}. Industry: ${params.brand.industry}. Colors: ${params.brand.primaryColor}. Style: Ultra-modern, cinematic, minimalistic, 4k. No text.`;
 
             const response = await openai.images.generate({
-                model: "dall-e-3",
+                model: imageModel,
                 prompt,
                 n: 1,
                 size: "1024x1024",
